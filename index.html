@@ -218,6 +218,25 @@
             color: white;
         }
 
+        .btn-danger {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        #header-logout-btn {
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+
+        #header-logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #FF6B35 0%, #FFC72C 100%);
@@ -567,6 +586,12 @@
             height: 180px;
             overflow: hidden;
             position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .food-img:hover {
+            transform: scale(1.02);
         }
 
         .food-img img {
@@ -1091,6 +1116,36 @@
             opacity: 0.9;
         }
 
+        .logout-btn {
+            background-color: var(--danger);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        }
+
+        [data-theme="dark"] .logout-btn {
+            background-color: #dc3545;
+        }
+
+        [data-theme="dark"] .logout-btn:hover {
+            background-color: #c82333;
+        }
+
         .profile-body {
             padding: 30px;
         }
@@ -1117,6 +1172,21 @@
         .profile-tab.active {
             color: var(--primary);
             border-bottom-color: var(--primary);
+        }
+
+        .logout-tab {
+            margin-left: auto;
+            color: var(--danger) !important;
+            border-bottom-color: transparent !important;
+        }
+
+        .logout-tab:hover {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: var(--danger) !important;
+        }
+
+        [data-theme="dark"] .logout-tab:hover {
+            background-color: rgba(220, 53, 69, 0.2);
         }
 
         .profile-content {
@@ -1198,6 +1268,26 @@
         }
 
         .status-processing {
+            background-color: var(--warning);
+            color: var(--dark);
+        }
+
+        .status-order-placed {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .status-kitchen {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .status-out-for-delivery {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .status-arriving {
             background-color: var(--warning);
             color: var(--dark);
         }
@@ -1364,6 +1454,70 @@
 
         [data-theme="dark"] .admin-panel {
             background-color: #2a2a2a;
+        }
+
+        /* Enhanced Dark Mode Support */
+        [data-theme="dark"] body {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
+
+        [data-theme="dark"] .form-control {
+            background-color: #333;
+            border-color: #555;
+            color: #f5f5f5;
+        }
+
+        [data-theme="dark"] .form-control::placeholder {
+            color: #aaa;
+        }
+
+        [data-theme="dark"] .modal-content {
+            background-color: #2a2a2a;
+            color: #f5f5f5;
+        }
+
+        [data-theme="dark"] .profile-container {
+            background-color: #333;
+        }
+
+        [data-theme="dark"] .checkout-section {
+            background-color: #333;
+        }
+
+        [data-theme="dark"] .order-summary {
+            background-color: #333;
+        }
+
+        /* Address Management */
+        .address-item {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+        }
+
+        [data-theme="dark"] .address-item {
+            background-color: #333;
+            border-color: #555;
+        }
+
+        .address-type {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .address-details {
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        .address-actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
         }
 
         .admin-panel.active {
@@ -1593,9 +1747,44 @@
 
         /* Footer */
         footer {
-            background-color: var(--dark);
+            background-color: #212529;
             color: white;
             padding: 60px 0 20px;
+        }
+
+        [data-theme="dark"] footer {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
+
+        [data-theme="dark"] .footer-col h3 {
+            color: #f5f5f5;
+        }
+
+        [data-theme="dark"] .footer-col p {
+            color: #ddd;
+        }
+
+        [data-theme="dark"] .footer-col ul li a {
+            color: #ccc;
+        }
+
+        [data-theme="dark"] .footer-col ul li a:hover {
+            color: var(--primary);
+        }
+
+        [data-theme="dark"] .footer-bottom {
+            color: #aaa;
+            border-top-color: #444;
+        }
+
+        [data-theme="dark"] .social-links a {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #f5f5f5;
+        }
+
+        [data-theme="dark"] .social-links a:hover {
+            background-color: var(--primary);
         }
 
         .footer-grid {
@@ -1683,7 +1872,7 @@
             transform: translateY(100px);
             opacity: 0;
             transition: all 0.3s;
-            z-index: 1000;
+            z-index: 100;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -1736,17 +1925,40 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 100;
+            z-index: 1000;
             transform: translateY(100%);
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
+            border-top: 1px solid #eee;
         }
 
         [data-theme="dark"] .sticky-add-to-cart {
             background-color: #2a2a2a;
+            color: #f5f5f5;
+            border-top: 1px solid #444;
+        }
+
+        [data-theme="dark"] .sticky-add-to-cart .food-details h4 {
+            color: #f5f5f5;
+        }
+
+        [data-theme="dark"] .sticky-add-to-cart .food-details .price {
+            color: var(--primary);
         }
 
         .sticky-add-to-cart.active {
             transform: translateY(0);
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .sticky-add-to-cart .food-info {
@@ -1784,6 +1996,139 @@
             gap: 15px;
         }
 
+        .sticky-add-to-cart .quantity-stepper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #f8f9fa;
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid #e9ecef;
+        }
+
+        .sticky-add-to-cart .quantity-btn {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 2px 6px;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .sticky-add-to-cart .quantity-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .sticky-add-to-cart .quantity-value {
+            font-weight: 600;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        [data-theme="dark"] .sticky-add-to-cart .quantity-stepper {
+            background-color: #444;
+            border-color: #555;
+        }
+
+        .sticky-add-to-cart .add-to-cart {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .sticky-add-to-cart .add-to-cart:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .sticky-add-to-cart .close-sticky {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .sticky-add-to-cart .close-sticky:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            color: var(--danger);
+        }
+
+        [data-theme="dark"] .sticky-add-to-cart .close-sticky:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Ensure sticky bar is above other elements */
+        .sticky-add-to-cart.active {
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        /* Add some spacing to prevent overlap with footer */
+        body {
+            padding-bottom: 80px;
+        }
+
+        /* Ensure the sticky bar is always on top */
+        .sticky-add-to-cart {
+            position: fixed !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 9999 !important;
+        }
+
+        /* Ensure proper positioning on mobile */
+        @media (max-width: 768px) {
+            .sticky-add-to-cart {
+                padding: 12px;
+            }
+            
+            .sticky-add-to-cart .food-info {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .sticky-add-to-cart .actions {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+
+        .sticky-add-to-cart .close-sticky {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .sticky-add-to-cart .close-sticky:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        [data-theme="dark"] .sticky-add-to-cart .close-sticky {
+            color: #aaa;
+        }
+
+        [data-theme="dark"] .sticky-add-to-cart .close-sticky:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #f5f5f5;
+        }
+
         /* Responsive */
         @media (max-width: 992px) {
             .hero h1 {
@@ -1814,7 +2159,50 @@
             }
 
             .nav-icons {
-                margin-bottom: 15px;
+                gap: 15px;
+            }
+
+            .sticky-add-to-cart {
+                padding: 12px 15px;
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+
+            .sticky-add-to-cart .food-info {
+                justify-content: center;
+            }
+
+            .sticky-add-to-cart .actions {
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .sticky-add-to-cart .quantity-stepper {
+                gap: 8px;
+            }
+
+            .user-actions {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+
+            #header-logout-btn {
+                margin-left: 0;
+                margin-top: 5px;
+            }
+
+            .logout-tab {
+                margin-left: 0;
+                margin-top: 10px;
+                text-align: center;
+                border-top: 1px solid #eee;
+                padding-top: 15px;
+            }
+
+            [data-theme="dark"] .logout-tab {
+                border-top-color: #444;
             }
 
             .hero h1 {
@@ -2059,6 +2447,9 @@
                     <i class="fas fa-moon"></i>
                 </button>
                 <button class="btn btn-primary" id="login-btn">Login</button>
+                <button class="btn btn-danger" id="header-logout-btn" style="display: none;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
             </div>
         </div>
     </header>
@@ -2462,6 +2853,9 @@
                     </div>
                     <h2 class="profile-name" id="profile-name">John Doe</h2>
                     <p class="profile-email" id="profile-email">john.doe@example.com</p>
+                    <button class="logout-btn" id="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
                 </div>
 
                 <div class="profile-body">
@@ -2469,6 +2863,9 @@
                         <div class="profile-tab active" data-tab="personal">Personal Info</div>
                         <div class="profile-tab" data-tab="orders">Order History</div>
                         <div class="profile-tab" data-tab="addresses">Addresses</div>
+                        <div class="profile-tab logout-tab" data-tab="logout">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </div>
                     </div>
 
                     <div class="profile-content active" id="personal-info">
@@ -2716,6 +3113,9 @@
             <button class="add-to-cart" id="sticky-add-to-cart-btn">
                 <i class="fas fa-shopping-cart"></i> Add
             </button>
+            <button class="close-sticky" id="close-sticky-cart">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
     </div>
 
@@ -2897,19 +3297,19 @@
             document.documentElement.setAttribute('data-theme', savedTheme);
             updateThemeIcon(savedTheme);
 
-            // Load cart from localStorage
+            // Load saved data
+            loadFoodItems();
+            
             const savedCart = localStorage.getItem('cart');
             if (savedCart) {
                 cart = JSON.parse(savedCart);
-                updateCartUI();
             }
-            // Load user from localStorage
+            
             const savedUser = localStorage.getItem('user');
             if (savedUser) {
                 currentUser = JSON.parse(savedUser);
-                updateProfileUI();
             }
-            // Load orders from localStorage
+            
             const savedOrders = localStorage.getItem('orders');
             if (savedOrders) {
                 orders = JSON.parse(savedOrders);
@@ -2920,9 +3320,12 @@
             updateCartUI();
             simulateOrderTracking();
             setupIntersectionObserver();
+            
             if (currentUser) {
                 renderOrderHistory();
             }
+            
+            updateProfileUI();
             updateAuthUI();
         });
 
@@ -2940,6 +3343,19 @@
                 observer.observe(card);
             });
         }
+
+        // Auto-hide sticky cart on scroll up
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down, hide sticky cart if visible
+                if (stickyAddToCart.classList.contains('active')) {
+                    stickyAddToCart.classList.remove('active');
+                }
+            }
+            lastScrollTop = scrollTop;
+        });
 
         // Render food items
         function renderFoodItems() {
@@ -3021,7 +3437,10 @@
                 // Enable sticky add-to-cart via image click
                 const imgEl = foodCard.querySelector('.food-img');
                 if (imgEl) {
+                    imgEl.style.cursor = 'pointer';
+                    imgEl.title = 'Click to add to cart';
                     imgEl.addEventListener('click', function () {
+                        console.log('Food image clicked:', item.name);
                         currentFoodItem = item;
                         stickyFoodImg.src = item.image;
                         stickyFoodImg.alt = item.name;
@@ -3029,6 +3448,13 @@
                         stickyFoodPrice.textContent = `₹${item.price}`;
                         stickyQuantity.textContent = '1';
                         stickyAddToCart.classList.add('active');
+                        console.log('Sticky add-to-cart activated, currentFoodItem:', currentFoodItem);
+                        
+                        // Scroll to bottom to show the sticky bar
+                        window.scrollTo({
+                            top: document.body.scrollHeight,
+                            behavior: 'smooth'
+                        });
                     });
                 }
             });
@@ -3098,6 +3524,34 @@
             document.getElementById('show-signup').addEventListener('click', showSignupModal);
             document.getElementById('show-login').addEventListener('click', showLoginModal);
             document.getElementById('logout-admin').addEventListener('click', logoutAdmin);
+            
+            // Logout buttons
+            document.getElementById('header-logout-btn').addEventListener('click', handleLogout);
+            document.getElementById('logout-btn').addEventListener('click', handleLogout);
+            
+            // Profile tabs (including logout tab)
+            document.querySelectorAll('.profile-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and content
+                    document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.profile-content').forEach(c => c.classList.remove('active'));
+                    
+                    if (tabName === 'logout') {
+                        handleLogout();
+                        return;
+                    }
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const contentId = tabName === 'personal' ? 'personal-info' : tabName === 'orders' ? 'order-history' : 'addresses';
+                    const content = document.getElementById(contentId);
+                    if (content) content.classList.add('active');
+                });
+            });
 
             // Cart
             document.getElementById('close-cart').addEventListener('click', toggleCart);
@@ -3211,21 +3665,44 @@
                 const currentQuantity = parseInt(stickyQuantity.textContent);
                 if (currentQuantity > 1) {
                     stickyQuantity.textContent = currentQuantity - 1;
+                    // Update price display
+                    if (currentFoodItem) {
+                        const newPrice = currentFoodItem.price * (currentQuantity - 1);
+                        stickyFoodPrice.textContent = `₹${newPrice}`;
+                    }
                 }
             });
 
             stickyIncreaseQuantity.addEventListener('click', function () {
                 const currentQuantity = parseInt(stickyQuantity.textContent);
                 stickyQuantity.textContent = currentQuantity + 1;
+                // Update price display
+                if (currentFoodItem) {
+                    const newPrice = currentFoodItem.price * (currentQuantity + 1);
+                    stickyFoodPrice.textContent = `₹${newPrice}`;
+                }
             });
 
             stickyAddToCartBtn.addEventListener('click', function () {
+                console.log('Sticky add-to-cart button clicked');
                 if (currentFoodItem) {
                     const quantity = parseInt(stickyQuantity.textContent);
+                    console.log('Adding to cart:', currentFoodItem.name, 'Quantity:', quantity);
                     addToCart(currentFoodItem.id, quantity);
                     stickyAddToCart.classList.remove('active');
                     currentFoodItem = null;
+                    showToast('Item added to cart successfully!', 'success');
+                } else {
+                    console.log('No currentFoodItem found');
+                    showToast('Please select a food item first', 'error');
                 }
+            });
+
+            // Close sticky cart functionality
+            document.getElementById('close-sticky-cart').addEventListener('click', function () {
+                console.log('Close sticky cart clicked');
+                stickyAddToCart.classList.remove('active');
+                currentFoodItem = null;
             });
         }
 
@@ -3305,6 +3782,42 @@
             signupModal.classList.remove('active');
         }
 
+        // Handle logout
+        async function handleLogout() {
+            // Show confirmation dialog
+            if (!confirm('Are you sure you want to logout? Your cart items will be cleared.')) {
+                return;
+            }
+            
+            try {
+                // Sign out from Firebase
+                await firebase.auth().signOut();
+                
+                // Clear local user data
+                currentUser = null;
+                localStorage.removeItem('user');
+                
+                // Clear cart
+                cart = [];
+                localStorage.removeItem('cart');
+                
+                // Update UI
+                updateAuthUI();
+                updateCartUI();
+                
+                // Show home page
+                showHome();
+                
+                // Show success message
+                showToast('Logged out successfully', 'success');
+                
+                console.log('User logged out successfully');
+            } catch (error) {
+                console.error('Logout error:', error);
+                showToast('Error logging out', 'error');
+            }
+        }
+
         // Show admin panel
         function showAdminPanel() {
             if (!isAdmin) {
@@ -3316,6 +3829,7 @@
             adminPanel.classList.add('active');
             document.querySelector('footer').style.display = 'block';
             renderAdminFoodList();
+            renderAdminOrders();
         }
 
         // Logout admin
@@ -3540,6 +4054,20 @@
             checkoutPage.classList.add('active');
             document.querySelector('footer').style.display = 'block';
 
+            // Populate checkout form with user data if available
+            if (currentUser) {
+                document.getElementById('checkout-name').value = currentUser.name || '';
+                document.getElementById('checkout-phone').value = currentUser.phone || '';
+                
+                // If user has saved addresses, populate with the first one
+                if (currentUser.addresses && currentUser.addresses.length > 0) {
+                    const firstAddress = currentUser.addresses[0];
+                    document.getElementById('checkout-address').value = firstAddress.fullAddress || '';
+                    document.getElementById('checkout-locality').value = firstAddress.locality || '';
+                    document.getElementById('checkout-pincode').value = firstAddress.pincode || '';
+                }
+            }
+
             // Populate checkout order items
             checkoutOrderItems.innerHTML = '';
             let subtotal = 0;
@@ -3567,10 +4095,22 @@
             checkoutTotal.textContent = `₹${total}`;
         }
 
-        // Place order (replace your existing placeOrder)
+        // Place order
         async function placeOrder() {
             if (!currentUser) {
                 showToast('Please login to place an order', 'error');
+                return;
+            }
+
+            // Get checkout form data
+            const name = document.getElementById('checkout-name').value.trim();
+            const phone = document.getElementById('checkout-phone').value.trim();
+            const address = document.getElementById('checkout-address').value.trim();
+            const locality = document.getElementById('checkout-locality').value.trim();
+            const pincode = document.getElementById('checkout-pincode').value.trim();
+
+            if (!name || !phone || !address || !locality || !pincode) {
+                showToast('Please fill all delivery details', 'error');
                 return;
             }
 
@@ -3586,42 +4126,47 @@
                 id: orderId,
                 userId: currentUser.uid || null,
                 userEmail: currentUser.email,
+                userName: name,
+                userPhone: phone,
+                deliveryAddress: {
+                    fullAddress: address,
+                    locality: locality,
+                    pincode: pincode
+                },
                 items: cart.map(ci => ({ id: ci.id, name: ci.name, quantity: ci.quantity, price: ci.price })),
                 subtotal,
                 deliveryFee,
                 taxes,
                 total,
-                status: 'Processing',
-                date: new Date().toLocaleString()
+                paymentMethod: selectedPaymentMethod,
+                status: 'Order Placed',
+                statusCode: 0,
+                createdAt: new Date().toISOString(),
+                estimatedDelivery: new Date(Date.now() + 45 * 60000).toISOString() // 45 minutes from now
             };
 
             try {
-                // Save to Firestore orders collection
-                await firebase.firestore().collection('orders').add({
-                    ...orderRecord,
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                });
+                // Save order to Firestore
+                if (window.firebaseHelpers && window.firebaseHelpers.createOrderInFirestore) {
+                    await window.firebaseHelpers.createOrderInFirestore(orderRecord);
+                }
+
+                // Add to local orders
+                orders.push(orderRecord);
+                localStorage.setItem('orders', JSON.stringify(orders));
+
+                // Clear cart
+                cart = [];
+                saveCart();
+                updateCartUI();
+
+                // Show order tracking
+                showOrderTracking(orderRecord);
+                showToast('Order placed successfully!', 'success');
             } catch (err) {
-                console.error('Failed to save order to Firestore', err);
+                console.error('Order creation error', err);
+                showToast('Failed to place order. Please try again.', 'error');
             }
-
-            // Also keep local history (falls back if Firestore isn't available)
-            orders.push(orderRecord);
-            localStorage.setItem('orders', JSON.stringify(orders));
-
-            // Clear cart
-            cart = [];
-            updateCartUI();
-            saveCart();
-
-            // Show order tracking UI
-            hideAllSections();
-            orderTracking.classList.add('active');
-            document.querySelector('footer').style.display = 'block';
-            currentOrderStatus = 0;
-            updateOrderTracking();
-
-            showToast(`Order placed successfully! Total: ₹${total}`, 'success');
         }
 
 
@@ -3661,10 +4206,24 @@
             }).join('');
         }
 
-        // Hide login/signup actions when authenticated
+        // Update authentication UI based on login status
         function updateAuthUI() {
             const loginBtn = document.getElementById('login-btn');
-            if (loginBtn) loginBtn.style.display = currentUser ? 'none' : 'inline-block';
+            const headerLogoutBtn = document.getElementById('header-logout-btn');
+            
+            if (loginBtn) {
+                if (currentUser) {
+                    loginBtn.textContent = 'Profile';
+                    loginBtn.removeEventListener('click', showLoginModal);
+                    loginBtn.addEventListener('click', showProfile);
+                    if (headerLogoutBtn) headerLogoutBtn.style.display = 'inline-block';
+                } else {
+                    loginBtn.textContent = 'Login';
+                    loginBtn.removeEventListener('click', showProfile);
+                    loginBtn.addEventListener('click', showLoginModal);
+                    if (headerLogoutBtn) headerLogoutBtn.style.display = 'none';
+                }
+            }
         }
 
         // Update order tracking UI
@@ -3690,7 +4249,7 @@
                     if (currentOrderStatus === 4) {
                         setTimeout(() => {
                             showToast('Order delivered successfully!', 'success');
-                        }, 1000);
+                        }, 70000);
                     }
                 }
             }, 5000);
@@ -3698,49 +4257,65 @@
 
         // Handle search
         function handleSearch() {
-            const searchTerm = searchInput.value.trim();
-            if (searchTerm !== '') {
-                showToast(`Searching for: ${searchTerm}`, 'info');
+            searchTerm = searchInput.value.trim();
+            renderFoodItems();
+            
+            if (searchTerm) {
+                showToast(`Searching for "${searchTerm}"`, 'info');
             }
         }
 
         // Handle add food (admin)
         function handleAddFood(e) {
             e.preventDefault();
-            const name = document.getElementById('food-name').value;
-            const price = parseInt(document.getElementById('food-price').value);
+            
+            const name = document.getElementById('food-name').value.trim();
+            const price = parseFloat(document.getElementById('food-price').value);
             const category = document.getElementById('food-category').value;
-            const image = document.getElementById('food-image').value || `https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80`;
-            const description = document.getElementById('food-description').value || `${name} - delicious food`;
+            const image = document.getElementById('food-image').value.trim();
+            const description = document.getElementById('food-description').value.trim();
 
-            const newFood = {
-                id: foodItems.length + 1,
+            if (!name || !price || !category) {
+                showToast('Please fill all required fields', 'error');
+                return;
+            }
+
+            // Create new food item
+            const newItem = {
+                id: Date.now(),
                 name,
                 price,
                 category,
+                image: image || 'https://via.placeholder.com/300x200?text=Food+Image',
                 description,
-                image,
                 rating: 4.0,
                 deliveryTime: 30
             };
 
-            foodItems.push(newFood);
-            renderFoodItems();
-            renderAdminFoodList();
-
+            // Add to food items
+            foodItems.push(newItem);
+            
+            // Save to localStorage (in real app, save to database)
+            localStorage.setItem('foodItems', JSON.stringify(foodItems));
+            
             // Reset form
-            document.getElementById('add-food-form').reset();
-
-            showToast(`${name} added to menu successfully`, 'success');
+            e.target.reset();
+            
+            // Update admin food list
+            renderAdminFoodList();
+            
+            showToast('Food item added successfully', 'success');
         }
 
         // Render admin food list
         function renderAdminFoodList() {
+            if (!isAdmin) return;
+
             adminFoodList.innerHTML = '';
             foodItems.forEach(item => {
-                const foodItem = document.createElement('div');
-                foodItem.className = 'admin-food-item';
-                foodItem.innerHTML = `
+                const adminItem = document.createElement('div');
+                adminItem.className = 'admin-food-item';
+                adminItem.innerHTML = `
                     <div class="admin-food-img">
                         <img src="${item.image}" alt="${item.name}">
                     </div>
@@ -3748,34 +4323,218 @@
                         <div class="admin-food-name">${item.name}</div>
                         <div class="admin-food-price">₹${item.price}</div>
                         <div class="admin-food-actions">
-                            <button class="btn btn-small btn-edit">Edit</button>
-                            <button class="btn btn-small btn-delete">Delete</button>
+                            <button class="btn btn-edit btn-small" onclick="editFoodItem(${item.id})">Edit</button>
+                            <button class="btn btn-delete btn-small" onclick="deleteFoodItem(${item.id})">Delete</button>
                         </div>
                     </div>
                 `;
-                adminFoodList.appendChild(foodItem);
+                adminFoodList.appendChild(adminItem);
             });
+        }
+
+        // Edit food item
+        function editFoodItem(itemId) {
+            const item = foodItems.find(food => food.id === itemId);
+            if (!item) return;
+
+            const newName = prompt('Enter new name:', item.name);
+            if (newName === null) return;
+            
+            const newPrice = prompt('Enter new price:', item.price);
+            if (newPrice === null) return;
+            
+            const newCategory = prompt('Enter new category (indian/chinese/italian/mexican/american/desserts):', item.category);
+            if (newCategory === null) return;
+
+            // Update item
+            item.name = newName.trim();
+            item.price = parseFloat(newPrice);
+            item.category = newCategory.trim();
+
+            // Save to localStorage
+            localStorage.setItem('foodItems', JSON.stringify(foodItems));
+            
+            // Update UI
+            renderAdminFoodList();
+            renderFoodItems();
+            
+            showToast('Food item updated successfully', 'success');
+        }
+
+        // Delete food item
+        function deleteFoodItem(itemId) {
+            if (!confirm('Are you sure you want to delete this food item?')) return;
+
+            // Remove from food items
+            const index = foodItems.findIndex(food => food.id === itemId);
+            if (index > -1) {
+                foodItems.splice(index, 1);
+                
+                // Save to localStorage
+                localStorage.setItem('foodItems', JSON.stringify(foodItems));
+                
+                // Update UI
+                renderAdminFoodList();
+                renderFoodItems();
+                
+                showToast('Food item deleted successfully', 'success');
+            }
         }
 
         // Show toast notification
         function showToast(message, type = 'info') {
             toastMessage.textContent = message;
-            toast.className = 'toast show';
-
-            if (type === 'success') {
-                toast.classList.add('success');
-                toast.querySelector('i').className = 'fas fa-check-circle';
-            } else if (type === 'error') {
-                toast.classList.add('error');
-                toast.querySelector('i').className = 'fas fa-exclamation-circle';
-            } else {
-                toast.classList.add('info');
-                toast.querySelector('i').className = 'fas fa-info-circle';
-            }
+            toast.className = `toast ${type}`;
+            toast.classList.add('show');
 
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000);
+        }
+
+        // Show order tracking
+        function showOrderTracking(order) {
+            hideAllSections();
+            orderTracking.classList.add('active');
+            document.querySelector('footer').style.display = 'block';
+
+            // Update tracking header
+            document.querySelector('.tracking-header h2').textContent = 'Track Your Order';
+            document.querySelector('.tracking-header p').textContent = `Order #${order.id}`;
+
+            // Update tracking steps based on order status
+            updateTrackingSteps(order.statusCode || 0);
+        }
+
+        // Update tracking steps
+        function updateTrackingSteps(statusCode) {
+            const steps = document.querySelectorAll('.tracking-step');
+            steps.forEach((step, index) => {
+                step.classList.remove('active', 'completed');
+                if (index < statusCode) {
+                    step.classList.add('completed');
+                } else if (index === statusCode) {
+                    step.classList.add('active');
+                }
+            });
+        }
+
+        // Simulate order tracking updates (admin controlled)
+        function simulateOrderTracking() {
+            // This would be controlled by admin in real app
+            setInterval(() => {
+                if (orders.length > 0) {
+                    const latestOrder = orders[orders.length - 1];
+                    if (latestOrder.statusCode < 4) {
+                        // Simulate status progression
+                        latestOrder.statusCode++;
+                        const statuses = ['Order Placed', 'Kitchen', 'Out for Delivery', 'Arriving', 'Delivered'];
+                        latestOrder.status = statuses[latestOrder.statusCode];
+                        
+                        // Update tracking if visible
+                        if (orderTracking.classList.contains('active')) {
+                            updateTrackingSteps(latestOrder.statusCode);
+                        }
+                        
+                        // Save updated orders
+                        localStorage.setItem('orders', JSON.stringify(orders));
+                    }
+                }
+            }, 30000); // Update every 30 seconds
+        }
+
+        // Update profile UI
+        function updateProfileUI() {
+            if (currentUser) {
+                profileNameEl.textContent = currentUser.name || 'User';
+                profileEmailEl.textContent = currentUser.email || '';
+                infoNameEl.textContent = currentUser.name || 'Not set';
+                infoEmailEl.textContent = currentUser.email || 'Not set';
+                infoPhoneEl.textContent = currentUser.phone || 'Not set';
+                
+                // Update auth button
+                document.getElementById('login-btn').textContent = 'Profile';
+                document.getElementById('login-btn').removeEventListener('click', showLoginModal);
+                document.getElementById('login-btn').addEventListener('click', showProfile);
+            } else {
+                profileNameEl.textContent = 'Guest User';
+                profileEmailEl.textContent = 'guest@example.com';
+                infoNameEl.textContent = 'Not set';
+                infoEmailEl.textContent = 'Not set';
+                infoPhoneEl.textContent = 'Not set';
+                
+                // Update auth button
+                document.getElementById('login-btn').textContent = 'Login';
+                document.getElementById('login-btn').removeEventListener('click', showProfile);
+                document.getElementById('login-btn').addEventListener('click', showLoginModal);
+            }
+        }
+
+        // Update auth UI
+        function updateAuthUI() {
+            if (currentUser) {
+                // Check if user is admin (simple check for demo)
+                if (currentUser.email === 'admin@zwigato.com') {
+                    isAdmin = true;
+                    // Add admin button to profile
+                    if (!document.getElementById('admin-btn')) {
+                        const adminBtn = document.createElement('button');
+                        adminBtn.className = 'btn btn-outline';
+                        adminBtn.id = 'admin-btn';
+                        adminBtn.textContent = 'Admin Panel';
+                        adminBtn.addEventListener('click', showAdminPanel);
+                        document.querySelector('.user-actions').appendChild(adminBtn);
+                    }
+                }
+            }
+        }
+
+        // Render order history
+        function renderOrderHistory() {
+            if (!currentUser) return;
+
+            const userOrders = orders.filter(order => order.userId === currentUser.uid);
+            
+            if (userOrders.length === 0) {
+                orderHistoryContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h3>No orders yet</h3>
+                        <p>Start ordering to see your order history here</p>
+                    </div>
+                `;
+                return;
+            }
+
+            orderHistoryContainer.innerHTML = '';
+            userOrders.forEach(order => {
+                const orderItem = document.createElement('div');
+                orderItem.className = 'order-history-item';
+                orderItem.innerHTML = `
+                    <div class="order-header">
+                        <div class="order-id">Order #${order.id}</div>
+                        <div class="order-status status-${order.status.toLowerCase().replace(' ', '-')}">${order.status}</div>
+                    </div>
+                    <div class="order-details">
+                        <div class="order-items">${order.items.length} items</div>
+                        <div class="order-total">₹${order.total}</div>
+                    </div>
+                    <div class="order-date">${new Date(order.createdAt).toLocaleDateString()}</div>
+                    <button class="btn btn-outline btn-small" onclick="showOrderTracking(${JSON.stringify(order).replace(/"/g, '&quot;')})">
+                        Track Order
+                    </button>
+                `;
+                orderHistoryContainer.appendChild(orderItem);
+            });
+        }
+
+        // Load food items from localStorage on startup
+        function loadFoodItems() {
+            const savedFoodItems = localStorage.getItem('foodItems');
+            if (savedFoodItems) {
+                foodItems.length = 0;
+                foodItems.push(...JSON.parse(savedFoodItems));
+            }
         }
 
         // Handle window resize
@@ -3784,6 +4543,198 @@
                 cartBottomSheet.classList.remove('active');
                 cartSidebar.classList.add('active');
             }
+        });
+
+        // Enhanced profile editing with address management
+        function setupProfileEditing() {
+            document.querySelectorAll('.edit-profile-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    if (!currentUser) {
+                        showLoginModal();
+                        return;
+                    }
+                    
+                    const action = this.textContent.toLowerCase();
+                    if (action.includes('profile')) {
+                        editUserProfile();
+                    } else if (action.includes('address')) {
+                        addNewAddress();
+                    }
+                });
+            });
+        }
+
+        // Edit user profile
+        function editUserProfile() {
+            const newName = prompt('Enter full name:', currentUser.name || '');
+            if (newName === null) return;
+            
+            const newEmail = prompt('Enter email:', currentUser.email || '');
+            if (newEmail === null) return;
+            
+            const newPhone = prompt('Enter phone:', currentUser.phone || '');
+            if (newPhone === null) return;
+
+            // Update user profile
+            currentUser = { ...currentUser, name: newName.trim(), email: newEmail.trim(), phone: newPhone.trim() };
+            
+            // Save to localStorage and Firestore
+            localStorage.setItem('user', JSON.stringify(currentUser));
+            
+            // Update Firestore if available
+            if (window.firebaseHelpers && window.firebaseHelpers.createUserProfile) {
+                window.firebaseHelpers.createUserProfile(currentUser.uid, currentUser);
+            }
+            
+            // Update UI
+            updateProfileUI();
+            updateAuthUI();
+            showToast('Profile updated successfully', 'success');
+        }
+
+        // Add new address
+        function addNewAddress() {
+            const addressType = prompt('Enter address type (Home/Work/Other):', 'Home');
+            if (addressType === null) return;
+            
+            const fullAddress = prompt('Enter full address:', '');
+            if (fullAddress === null) return;
+            
+            const locality = prompt('Enter locality:', '');
+            if (locality === null) return;
+            
+            const pincode = prompt('Enter pincode:', '');
+            if (pincode === null) return;
+
+            // Create new address
+            const newAddress = {
+                type: addressType.trim(),
+                fullAddress: fullAddress.trim(),
+                locality: locality.trim(),
+                pincode: pincode.trim()
+            };
+
+            // Add to user's addresses
+            if (!currentUser.addresses) {
+                currentUser.addresses = [];
+            }
+            currentUser.addresses.push(newAddress);
+            
+            // Save to localStorage
+            localStorage.setItem('user', JSON.stringify(currentUser));
+            
+            // Update UI
+            renderUserAddresses();
+            showToast('Address added successfully', 'success');
+        }
+
+        // Render user addresses
+        function renderUserAddresses() {
+            const addressesContainer = document.getElementById('addresses');
+            if (!addressesContainer || !currentUser) return;
+
+            if (!currentUser.addresses || currentUser.addresses.length === 0) {
+                addressesContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>No addresses saved</h3>
+                        <p>Add your first delivery address</p>
+                    </div>
+                `;
+                return;
+            }
+
+            addressesContainer.innerHTML = '';
+            currentUser.addresses.forEach((address, index) => {
+                const addressItem = document.createElement('div');
+                addressItem.className = 'info-row';
+                addressItem.innerHTML = `
+                    <div class="info-label">${address.type}</div>
+                    <div class="info-value">
+                        ${address.fullAddress}<br>
+                        ${address.locality} - ${address.pincode}
+                        <button class="btn btn-small btn-delete" onclick="deleteAddress(${index})" style="margin-left: 10px;">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                addressesContainer.appendChild(addressItem);
+            });
+        }
+
+        // Delete address
+        function deleteAddress(index) {
+            if (!confirm('Are you sure you want to delete this address?')) return;
+            
+            currentUser.addresses.splice(index, 1);
+            localStorage.setItem('user', JSON.stringify(currentUser));
+            
+            renderUserAddresses();
+            showToast('Address deleted successfully', 'success');
+        }
+
+        // Admin order management
+        function renderAdminOrders() {
+            const adminOrdersContainer = document.getElementById('admin-orders');
+            if (!adminOrdersContainer || !isAdmin) return;
+
+            if (orders.length === 0) {
+                adminOrdersContainer.innerHTML = '<div class="empty-state">No orders found</div>';
+                return;
+            }
+
+            adminOrdersContainer.innerHTML = '';
+            orders.forEach(order => {
+                const orderItem = document.createElement('div');
+                orderItem.className = 'order-history-item';
+                orderItem.innerHTML = `
+                    <div class="order-header">
+                        <div class="order-id">Order #${order.id}</div>
+                        <div class="order-status status-${order.status.toLowerCase().replace(' ', '-')}">${order.status}</div>
+                    </div>
+                    <div class="order-details">
+                        <div class="order-items">${order.items.length} items - ${order.items.map(item => item.name).join(', ')}</div>
+                        <div class="order-total">₹${order.total}</div>
+                    </div>
+                    <div class="order-date">${new Date(order.createdAt).toLocaleString()}</div>
+                    <div style="margin-top: 15px;">
+                        <button class="btn btn-primary btn-small" onclick="updateOrderStatus('${order.id}', ${order.statusCode + 1})">
+                            ${order.statusCode < 4 ? 'Update Status' : 'Completed'}
+                        </button>
+                    </div>
+                `;
+                adminOrdersContainer.appendChild(orderItem);
+            });
+        }
+
+        // Update order status (admin function)
+        function updateOrderStatus(orderId, newStatus) {
+            const order = orders.find(o => o.id === orderId);
+            if (!order) return;
+
+            const statuses = ['Order Placed', 'Kitchen', 'Out for Delivery', 'Arriving', 'Delivered'];
+            if (newStatus >= 0 && newStatus < statuses.length) {
+                order.statusCode = newStatus;
+                order.status = statuses[newStatus];
+                
+                // Save to localStorage
+                localStorage.setItem('orders', JSON.stringify(orders));
+                
+                // Update UI
+                renderAdminOrders();
+                
+                // Update tracking if visible
+                if (orderTracking.classList.contains('active')) {
+                    updateTrackingSteps(order.statusCode);
+                }
+                
+                showToast(`Order status updated to: ${order.status}`, 'success');
+            }
+        }
+
+        // Initialize profile editing
+        document.addEventListener('DOMContentLoaded', function() {
+            setupProfileEditing();
         });
     </script>
 </body>
