@@ -2952,8 +2952,11 @@
 
             <div class="admin-menu">
                 <div class="admin-menu-item active" data-admin-tab="dashboard">Dashboard</div>
-                <div class="admin-menu-item" data-admin-tab="menu">Menu Management</div>
+                <div class="admin-menu-item" data-admin-tab="menu">Menu</div>
                 <div class="admin-menu-item" data-admin-tab="orders">Orders</div>
+                <div class="admin-menu-item" data-admin-tab="coupons">Coupons</div>
+                <div class="admin-menu-item" data-admin-tab="users">Users</div>
+                <div class="admin-menu-item" data-admin-tab="settings">Settings</div>
                 <div class="admin-menu-item" data-admin-tab="reports">Reports</div>
             </div>
 
@@ -3085,6 +3088,88 @@
                     <p>2. Margherita Pizza - 198 orders</p>
                     <p>3. Veg Biryani - 176 orders</p>
                 </div>
+            </div>
+
+            <div class="admin-content" id="admin-coupons">
+                <h3>Coupons</h3>
+                <div class="add-food-form">
+                    <h4>Create Coupon</h4>
+                    <form id="add-coupon-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="coupon-code">Code</label>
+                                <input type="text" id="coupon-code" class="form-control" placeholder="SAVE50" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="coupon-discount">Discount %</label>
+                                <input type="number" id="coupon-discount" class="form-control" min="1" max="90" placeholder="10" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="coupon-min">Min Order (₹)</label>
+                                <input type="number" id="coupon-min" class="form-control" min="0" placeholder="299">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="coupon-start">Start Date</label>
+                                <input type="date" id="coupon-start" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="coupon-end">End Date</label>
+                                <input type="date" id="coupon-end" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>&nbsp;</label>
+                                <button type="submit" class="btn btn-primary">Add Coupon</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <h4>Active Coupons</h4>
+                <div class="food-list" id="admin-coupons-list"></div>
+            </div>
+
+            <div class="admin-content" id="admin-users">
+                <h3>Users</h3>
+                <div class="reviews-stats" style="margin-bottom:10px;">
+                    <div class="stat-item"><i class="fas fa-users"></i><span id="users-count">0 Users</span></div>
+                    <div class="stat-item"><i class="fas fa-user-shield"></i><span id="admins-count">0 Admins</span></div>
+                </div>
+                <div class="food-list" id="admin-users-list"></div>
+            </div>
+
+            <div class="admin-content" id="admin-settings">
+                <h3>Settings</h3>
+                <form id="admin-settings-form" class="add-food-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="restaurant-name">Restaurant Name</label>
+                            <input type="text" id="restaurant-name" class="form-control" placeholder="Zwigato Vashi">
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery-radius">Delivery Radius (km)</label>
+                            <input type="number" id="delivery-radius" class="form-control" min="1" max="25" placeholder="6">
+                        </div>
+                        <div class="form-group">
+                            <label for="prep-time">Avg. Prep Time (min)</label>
+                            <input type="number" id="prep-time" class="form-control" min="5" max="120" placeholder="25">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="min-order">Minimum Order (₹)</label>
+                            <input type="number" id="min-order" class="form-control" min="0" placeholder="199">
+                        </div>
+                        <div class="form-group">
+                            <label for="support-email">Support Email</label>
+                            <input type="email" id="support-email" class="form-control" placeholder="support@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>&nbsp;</label>
+                            <button type="submit" class="btn btn-primary">Save Settings</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -3281,6 +3366,10 @@
         const toast = document.getElementById('toast');
         const toastMessage = document.getElementById('toast-message');
         const adminFoodList = document.getElementById('admin-food-list');
+        const adminCouponsList = document.getElementById('admin-coupons-list');
+        const adminUsersList = document.getElementById('admin-users-list');
+        const usersCountEl = document.getElementById('users-count');
+        const adminsCountEl = document.getElementById('admins-count');
         const themeToggle = document.getElementById('theme-toggle');
         const profileNameEl = document.getElementById('profile-name');
         const profileEmailEl = document.getElementById('profile-email');
@@ -3563,6 +3652,10 @@
             document.getElementById('login-form').addEventListener('submit', handleLogin);
             document.getElementById('signup-form').addEventListener('submit', handleSignup);
             document.getElementById('add-food-form').addEventListener('submit', handleAddFood);
+            const addCouponForm = document.getElementById('add-coupon-form');
+            if (addCouponForm) addCouponForm.addEventListener('submit', handleAddCoupon);
+            const settingsForm = document.getElementById('admin-settings-form');
+            if (settingsForm) settingsForm.addEventListener('submit', handleSaveSettings);
 
             // Cuisine tabs
             document.querySelectorAll('.cuisine-tab').forEach(tab => {
@@ -4332,6 +4425,120 @@
             });
         }
 
+        // Coupons state
+        const adminCoupons = [];
+
+        function handleAddCoupon(e) {
+            e.preventDefault();
+            const code = document.getElementById('coupon-code').value.trim().toUpperCase();
+            const discount = parseInt(document.getElementById('coupon-discount').value, 10);
+            const min = parseInt(document.getElementById('coupon-min').value || '0', 10);
+
+            if (!code || isNaN(discount)) {
+                showToast('Enter valid coupon details', 'error');
+                return;
+            }
+
+            if (adminCoupons.find(c => c.id === code)) {
+                showToast('Coupon code already exists', 'warning');
+                return;
+            }
+
+            adminCoupons.unshift({ id: code, discount, min, active: true });
+            renderAdminCoupons();
+            e.target.reset();
+            showToast('Coupon added', 'success');
+        }
+
+        function renderAdminCoupons() {
+            if (!isAdmin) return;
+            adminCouponsList.innerHTML = '';
+            if (adminCoupons.length === 0) {
+                adminCouponsList.innerHTML = '<p style="color: var(--gray);">No coupons yet</p>';
+                return;
+            }
+
+            adminCouponsList.innerHTML = adminCoupons.map(c => `
+                <div class="order-history-item" style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+                    <div>
+                        <div style=\"font-weight:600;\">${c.id} — ${c.discount}% off</div>
+                        <div style=\"color:var(--gray);font-size:13px;\">Min Order: ₹${c.min || 0}</div>
+                    </div>
+                    <div>
+                        <button class=\"btn btn-small ${c.active ? 'btn-outline' : ''}\" onclick=\"toggleCoupon('${c.id}')\">${c.active ? 'Disable' : 'Enable'}</button>
+                        <button class=\"btn btn-danger btn-small\" onclick=\"deleteCoupon('${c.id}')\">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCoupon(id) {
+            const c = adminCoupons.find(x => x.id === id);
+            if (c) { c.active = !c.active; renderAdminCoupons(); }
+        }
+        function deleteCoupon(id) {
+            const idx = adminCoupons.findIndex(x => x.id === id);
+            if (idx !== -1) { adminCoupons.splice(idx, 1); renderAdminCoupons(); showToast('Coupon deleted', 'success'); }
+        }
+
+        // Users state (demo)
+        const adminUsers = [];
+
+        function renderAdminUsers() {
+            if (!isAdmin) return;
+            adminUsersList.innerHTML = adminUsers.map(u => `
+                <div class="order-history-item" style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+                    <div>
+                        <div style=\"font-weight:600;\">${u.name}</div>
+                        <div style=\"color:var(--gray);font-size:13px;\">${u.email}</div>
+                    </div>
+                    <div>
+                        <select class=\"form-control\" style=\"min-width:120px;\" onchange=\"changeUserRole('${u.id}', this.value)\">
+                            <option value=\"customer\" ${u.role==='customer'?'selected':''}>Customer</option>
+                            <option value=\"admin\" ${u.role==='admin'?'selected':''}>Admin</option>
+                        </select>
+                        <button class=\"btn btn-danger btn-small\" onclick=\"deleteUser('${u.id}')\">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+
+            const total = adminUsers.length;
+            const admins = adminUsers.filter(u => u.role==='admin').length;
+            usersCountEl.textContent = `${total} Users`;
+            adminsCountEl.textContent = `${admins} Admins`;
+        }
+
+        function changeUserRole(id, role) {
+            const u = adminUsers.find(x => x.id === id);
+            if (u) { u.role = role; renderAdminUsers(); showToast('Role updated', 'success'); }
+        }
+        function deleteUser(id) {
+            const idx = adminUsers.findIndex(x => x.id === id);
+            if (idx !== -1) { adminUsers.splice(idx, 1); renderAdminUsers(); showToast('User deleted', 'success'); }
+        }
+
+        // Settings
+        const adminSettings = { name: 'Zwigato Vashi', radius: 6, prep: 25, min: 199, support: 'support@example.com' };
+        function handleSaveSettings(e) {
+            e.preventDefault();
+            adminSettings.name = document.getElementById('restaurant-name').value || adminSettings.name;
+            adminSettings.radius = parseInt(document.getElementById('delivery-radius').value || adminSettings.radius, 10);
+            adminSettings.prep = parseInt(document.getElementById('prep-time').value || adminSettings.prep, 10);
+            adminSettings.min = parseInt(document.getElementById('min-order').value || adminSettings.min, 10);
+            adminSettings.support = document.getElementById('support-email').value || adminSettings.support;
+            showToast('Settings saved', 'success');
+        }
+
+        function hydrateSettingsForm() {
+            const rn = document.getElementById('restaurant-name');
+            if (!rn) return;
+            rn.value = adminSettings.name;
+            document.getElementById('delivery-radius').value = adminSettings.radius;
+            document.getElementById('prep-time').value = adminSettings.prep;
+            document.getElementById('min-order').value = adminSettings.min;
+            document.getElementById('support-email').value = adminSettings.support;
+        }
+
         // Edit food item
         function editFoodItem(itemId) {
             const item = foodItems.find(food => food.id === itemId);
@@ -4473,10 +4680,9 @@
         // Update auth UI
         function updateAuthUI() {
             if (currentUser) {
-                // Check if user is admin (simple check for demo)
-                if (currentUser.email === 'admin@zwigato.com') {
+                // Grant admin if role is admin OR matches approved admin email
+                if (currentUser.role === 'admin' || currentUser.email === 'ai1styear@gmail.com') {
                     isAdmin = true;
-                    // Add admin button to profile
                     if (!document.getElementById('admin-btn')) {
                         const adminBtn = document.createElement('button');
                         adminBtn.className = 'btn btn-outline';
@@ -4485,6 +4691,10 @@
                         adminBtn.addEventListener('click', showAdminPanel);
                         document.querySelector('.user-actions').appendChild(adminBtn);
                     }
+                } else {
+                    isAdmin = false;
+                    const btn = document.getElementById('admin-btn');
+                    if (btn) btn.remove();
                 }
             }
         }
@@ -4740,4 +4950,3 @@
 </body>
 
 </html>
-
